@@ -69,7 +69,7 @@ const SearchBar = () => {
           setSearchText(e.target.value);
         }}
       />
-      <SearchButton type="submit">Search</SearchButton>
+      <SearchButton type="submit">Search in web</SearchButton>
     </SearchForm>
   );
 };
