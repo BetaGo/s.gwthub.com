@@ -1,8 +1,13 @@
-<form (ngSubmit)="onSubmit()">
-  <select [(ngModel)]="searchEngine" name="searchEngine">
-    <option value="Google">Google</option>
-    <option value="StackOverflow">StackOverflow</option>
-  </select>
-  <input [(ngModel)]="searchContent" name="searchContent" />
-  <button>Search</button>
+<form (ngSubmit)="onSubmit()" class="search-bar">
+  <mat-form-field style="width: 150px;" class="no-padding" appearance="outline">
+    <mat-select [(ngModel)]="searchEngine" name="searchEngine">
+      <mat-option value="Google">Google</mat-option>
+      <mat-option value="StackOverflow">StackOverflow</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field style="width: 350px;" class="no-padding" appearance="outline">
+    <input matInput [(ngModel)]="searchContent" name="searchContent" />
+  </mat-form-field>
+  <button mat-flat-button color="primary">Search</button>
 </form>
