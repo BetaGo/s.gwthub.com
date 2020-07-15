@@ -1,8 +1,8 @@
-<form>
-  <select>
+<form (ngSubmit)="onSubmit()">
+  <select [(ngModel)]="searchEngine" name="searchEngine">
     <option value="Google">Google</option>
     <option value="StackOverflow">StackOverflow</option>
   </select>
-  <input />
+  <input [(ngModel)]="searchContent" name="searchContent" />
   <button>Search</button>
 </form>
