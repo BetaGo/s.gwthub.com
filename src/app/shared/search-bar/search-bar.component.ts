@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faStackOverflow, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,16 +7,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
-  searchEngine: string = 'Google';
+  searchEngine = 'Google';
 
-  searchContent: string = '';
+  searchContent = '';
+
+  faGoogle = faGoogle;
+  faStackOverflow = faStackOverflow;
+
+  get searchIcon() {
+    switch (this.searchEngine) {
+      case 'Google':
+        return this.faGoogle;
+      case 'StackOverflow':
+        return this.faStackOverflow;
+      default:
+        return this.faGoogle;
+    }
+  }
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    if (!this.searchContent) return;
+  onSearchEngineChange(searchEngine: string) {
+    this.searchEngine = searchEngine;
+  }
+
+  onSubmit(): void {
+    if (!this.searchContent) {
+      return;
+    }
     switch (this.searchEngine) {
       case 'Google':
         window.open(

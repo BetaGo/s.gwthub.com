@@ -1,13 +1,42 @@
 <form (ngSubmit)="onSubmit()" class="search-bar">
-  <mat-form-field style="width: 150px;" class="no-padding" appearance="outline">
-    <mat-select [(ngModel)]="searchEngine" name="searchEngine">
-      <mat-option value="Google">Google</mat-option>
-      <mat-option value="StackOverflow">StackOverflow</mat-option>
-    </mat-select>
+  <mat-menu #menu="matMenu">
+    <button
+      mat-menu-item
+      (click)="onSearchEngineChange('Google'); searchInput.focus()"
+    >
+      <fa-icon [icon]="faGoogle"></fa-icon>
+      <span> Google</span>
+    </button>
+    <button
+      mat-menu-item
+      (click)="onSearchEngineChange('StackOverflow'); searchInput.focus()"
+    >
+      <fa-icon [icon]="faStackOverflow"></fa-icon>
+      <span> StackOverflow</span>
+    </button>
+  </mat-menu>
+  <mat-form-field style="width: 350px;">
+    <mat-label>Search With {{ searchEngine }}</mat-label>
+    <div matPrefix class="prefix-icon" (click)="$event.stopPropagation()">
+      <fa-icon [icon]="searchIcon" [matMenuTriggerFor]="menu"></fa-icon>
+    </div>
+    <input
+      #searchInput
+      matInput
+      [(ngModel)]="searchContent"
+      name="searchContent"
+      autofocus
+    />
+    <button
+      mat-button
+      *ngIf="searchContent"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="searchContent = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <button hidden type="submit"></button>
   </mat-form-field>
-
-  <mat-form-field style="width: 350px;" class="no-padding" appearance="outline">
-    <input matInput [(ngModel)]="searchContent" name="searchContent" />
-  </mat-form-field>
-  <button mat-flat-button color="primary">Search</button>
 </form>

@@ -1,11 +1,7 @@
 .search-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.no-padding {
-  ::ng-deep .mat-form-field-wrapper {
-    padding-bottom: 0 !important;
+  font-size: 18px;
+  .prefix-icon {
+    cursor: pointer;
+    padding-right: 0.35em;
   }
 }
